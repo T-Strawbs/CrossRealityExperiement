@@ -9,7 +9,7 @@ public enum ConnectionType
     NONE
 }
 
-public class NetworkMenu : Menu
+public class NetworkMenu : MenuUI
 {
     [SerializeField] private Button _backButton;
 
@@ -37,7 +37,7 @@ public class NetworkMenu : Menu
 
     public override void Initialise(MenuState handMenu)
     {
-        _handMenu = handMenu;
+        _menuState = handMenu;
     }
 
     private void Awake()
@@ -57,7 +57,7 @@ public class NetworkMenu : Menu
 
     private void Back()
     {
-        _handMenu.ChangeMenu(MenuStateEnum.MAIN);
+        _menuState.ChangeMenu(MenuStateEnum.MAIN);
     }
 
     public void UpdateConnectionDetails(ConnectionType connectionType)
@@ -81,19 +81,23 @@ public class NetworkMenu : Menu
         _currentElement.Activate();
     }
 
-    public void RequestConnection(string ip, string port)
+    public bool RequestConnection(string ip, string port)
     {
         //attempt to establish a connection using the connection data
         bool isConnected = ConnectionManager.Instance.HandleConnection(ip, port, CurrentConnectionType);
         //toggle the connection state UI of the ConnectionDetailsElement
         _connectionDetailsElement.ToggleConnectionState(isConnected);
+
+        return isConnected;
     }
 
-    public void RequestDisconnect()
+    public bool RequestDisconnect()
     {
         //attempt to disconnect
         bool isConnected = ConnectionManager.Instance.Disconnect();
         //toggle the connection state UI of the ConnectionDetailsElement
         _connectionDetailsElement.ToggleConnectionState(isConnected);
+
+        return isConnected;
     }
 }

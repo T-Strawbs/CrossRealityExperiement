@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectsMenuVR : Menu
+public class ObjectsMenuVR : MenuUI
 {
-    public override string MenuName { get; protected set; } = "Object Menu";
+    public override string MenuName { get; protected set; } = "Object MenuUI";
 
     [SerializeField] private Button _backButton;
 
@@ -20,7 +20,7 @@ public class ObjectsMenuVR : Menu
 
     public override void Initialise(MenuState menustate)
     {
-        _handMenu = menustate;
+        _menuState = menustate;
     }
 
     private void Awake()
@@ -29,6 +29,6 @@ public class ObjectsMenuVR : Menu
     }
     private void Back()
     {
-        _handMenu.ChangeMenu(MenuStateEnum.MAIN);
+        _menuState.ChangeMenu(MenuStateEnum.MAIN);
     }
 }

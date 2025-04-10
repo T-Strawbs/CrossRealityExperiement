@@ -58,8 +58,10 @@ public class ConnectionDetailsElement : ConnectionElement
         _backButton.onClick.AddListener(() => _networkMenu.ChangeConnectionElement());
         _connectButton.onClick.AddListener(() =>
             _networkMenu.RequestConnection(_ipInputField.text,_portInputField.text));
-        _disconnectButton.onClick.AddListener(() => 
-            _networkMenu.RequestDisconnect());
+        _disconnectButton.onClick.AddListener(() => {
+            _networkMenu.RequestDisconnect();
+            ToggleConnectionState(false);
+        });
     }
 
     public void UpdateConnectionType(ConnectionType connectionType)

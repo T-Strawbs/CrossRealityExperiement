@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuVR : Menu
+public class MainMenuVR : MenuUI
 {
-    public override string MenuName { get; protected set; } = "Main Menu";
+    public override string MenuName { get; protected set; } = "Main MenuUI";
 
     [SerializeField] private Button _objectsMenuBtn;
     [SerializeField] private Button _networkMenuBtn;
@@ -21,9 +21,9 @@ public class MainMenuVR : Menu
 
     public override void Initialise(MenuState handMenu)
     {
-        _handMenu = handMenu;
-        _objectsMenuBtn.onClick.AddListener(() => _handMenu.ChangeMenu(MenuStateEnum.OBJECT));
-        _networkMenuBtn.onClick.AddListener(() => _handMenu.ChangeMenu(MenuStateEnum.NETWORK));
+        _menuState = handMenu;
+        _objectsMenuBtn.onClick.AddListener(() => _menuState.ChangeMenu(MenuStateEnum.OBJECT));
+        _networkMenuBtn.onClick.AddListener(() => _menuState.ChangeMenu(MenuStateEnum.NETWORK));
     }
     
 }

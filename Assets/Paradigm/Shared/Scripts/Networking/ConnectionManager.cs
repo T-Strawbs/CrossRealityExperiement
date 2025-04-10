@@ -8,7 +8,7 @@ using static System.Collections.Specialized.BitVector32;
 
 public class ConnectionManager : NetworkSingleton<ConnectionManager>
 {
-    public void Start()
+    public void Awake()
     {
         NetworkManager.Singleton.OnServerStarted += OnServerStart;
         NetworkManager.Singleton.OnServerStopped += OnServerStop;
@@ -69,15 +69,17 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
     {
         string ip = NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address;
         string port = NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Port.ToString();
-        Debug.Log($"Hosting server: {ip}:{port}");
+        Debug.Log($"Attempting to Host server on: {ip}:{port}");
         try
         {
             NetworkManager.Singleton.StartHost();
+            Debug.Log($"Hosting server: {ip}:{port}");
             return true;
         }
         catch (Exception e)
         {
             Debug.LogException(e);
+            Debug.Log($"Couldnt Host server on: {ip}:{port}");
             return false;
         }
     }
@@ -86,15 +88,17 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
     {
         string ip = NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address;
         string port = NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Port.ToString();
-        Debug.Log($"joining server: {ip}:{port}");
+        Debug.Log($"Attempting to join server on: {ip}:{port}");
         try
         {
             NetworkManager.Singleton.StartClient();
+            Debug.Log($"joining server: {ip}:{port}");
             return true;
         }
         catch (Exception e)
         {
             Debug.LogException(e);
+            Debug.Log($"Couldnt join server on: {ip}:{port}");
             return false;
         }
     }

@@ -19,7 +19,7 @@ public class NetworkSingleton<T> : NetworkBehaviour
         {
             if (_instance == null)
             {
-                var objs = FindObjectsOfType(typeof(T)) as T[];
+                var objs = FindObjectsByType(typeof(T),FindObjectsSortMode.InstanceID) as T[];
                 if (objs.Length > 0)
                     _instance = objs[0];
                 if (objs.Length > 1)

@@ -9,6 +9,7 @@ public enum MenuStateEnum
     MAIN,
     OBJECT,
     NETWORK,
+    DEBUG,
     NONE
 }
 
@@ -16,11 +17,11 @@ public class HandMenuState : MenuState
 {
     [SerializeField] private TMP_Text _menuNameText;
 
-    [SerializeField] private Menu _mainMenu;
-    [SerializeField] private Menu _objectsMenu;
-    [SerializeField] private Menu _networkMenu;
+    [SerializeField] private MenuUI _mainMenu;
+    [SerializeField] private MenuUI _objectsMenu;
+    [SerializeField] private MenuUI _networkMenu;
 
-    private Menu _currentMenu;
+    private MenuUI _currentMenu;
 
     private void Awake()
     {

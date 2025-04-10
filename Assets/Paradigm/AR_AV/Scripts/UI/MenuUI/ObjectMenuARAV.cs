@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObjectMenuARAV : Menu
+public class ObjectMenuARAV : MenuUI
 {
     public override string MenuName { get; protected set; } = "Object Menu";
 

@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Paradigm/AR_AV/Scenes/ARAV_Scene.unity
     guid: d64e9e4bd515d344f8da1de8f5467e60
   m_configObjects:

@@ -80,7 +80,7 @@ MonoBehaviour:
     - line: '|   mipStripping: 0'
     - line: '|   numberOfMipsStripped: 0'
     - line: '|   numberOfMipsStrippedPerMipmapLimitGroup: {}'
-    - line: '|   m_StackTraceTypes: 020000000200000002000000020000000200000001000000'
+    - line: '|   m_StackTraceTypes: 010000000100000001000000010000000100000001000000'
     - line: '|   iosShowActivityIndicatorOnLoading: -1'
     - line: '|   androidShowActivityIndicatorOnLoading: -1'
     - line: '|   iosUseCustomAppBackgroundBehavior: 0'
@@ -107,7 +107,7 @@ MonoBehaviour:
     - line: '|   androidApplicationEntry: 2'
     - line: '|   defaultIsNativeResolution: 1'
     - line: '|   macRetinaSupport: 1'
-    - line: '|   runInBackground: 0'
+    - line: '|   runInBackground: 1'
     - line: '|   muteOtherAudioSources: 0'
     - line: '|   Prepare IOS For Recording: 0'
     - line: '|   Force IOS Speakers When Recording: 0'
@@ -169,6 +169,16 @@ MonoBehaviour:
     - line: '|   preloadedAssets:'
     - line: '|   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b,
         type: 3}'
+    - line: '|   - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type:
+        3}'
+    - line: '|   - {fileID: 4800000, guid: 0945859e5a1034c2cb6dce53cb4fb899, type:
+        3}'
+    - line: '|   - {fileID: 7932219772859992385, guid: e2a848dceff59344eb4f3db416b22522,
+        type: 2}'
+    - line: '|   - {fileID: 1847635916693964740, guid: 9e805db0154869e4c85fa2271a332867,
+        type: 2}'
+    - line: '|   - {fileID: 11400000, guid: 5bbc783bdf91e3a45a94f04cd98821b0, type:
+        2}'
     - line: '|   metroInputSource: 0'
     - line: '|   wsaTransparentSwapchain: 0'
     - line: '|   m_HolographicPauseOnTrackingLoss: 1'
@@ -986,8 +996,8 @@ MonoBehaviour:
         m_Development: 1
         m_ConnectProfiler: 0
         m_BuildWithDeepProfilingSupport: 0
-        m_AllowDebugging: 0
-        m_WaitForManagedDebugger: 0
+        m_AllowDebugging: 1
+        m_WaitForManagedDebugger: 1
         m_ManagedDebuggerFixedPort: 0
         m_ExplicitNullChecks: 0
         m_ExplicitDivideByZeroChecks: 0

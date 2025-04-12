@@ -66,7 +66,7 @@ public class ConnectionDetailsElement : ConnectionElement
 
     public void UpdateConnectionType(ConnectionType connectionType)
     {
-        if(connectionType == ConnectionType.SERVER)
+        if(connectionType == ConnectionType.HOST)
         {
             _connectButtonText.text = "Host";
         }

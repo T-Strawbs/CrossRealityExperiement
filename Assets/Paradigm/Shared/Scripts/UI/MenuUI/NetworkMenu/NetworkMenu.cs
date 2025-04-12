@@ -2,12 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ConnectionType
-{
-    SERVER,
-    CLIENT,
-    NONE
-}
 
 public class NetworkMenu : MenuUI
 {
@@ -19,7 +13,7 @@ public class NetworkMenu : MenuUI
     [SerializeField] private ConnectionDetailsElement _connectionDetailsElement;
 
     /// <summary>
-    /// Enum for tracking the type of the current connection (SERVER or CLIENT)
+    /// Enum for tracking the type of the current connection (HOST or CLIENT)
     /// </summary>
     public ConnectionType CurrentConnectionType { get; private set; } = ConnectionType.NONE;
 

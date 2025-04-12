@@ -27,7 +27,7 @@ public class ConnectionTypeElement : ConnectionElement
             _networkMenu.UpdateConnectionDetails(ConnectionType.CLIENT);
         });
         _ServerBtn.onClick.AddListener(() => {
-            _networkMenu.UpdateConnectionDetails(ConnectionType.SERVER);
+            _networkMenu.UpdateConnectionDetails(ConnectionType.HOST);
         });
     }
 

@@ -6,8 +6,6 @@ internal class ObjectMenu : MenuUI
 {
     public override string MenuName { get; protected set; } = "Object Menu";
 
-    
-
     [SerializeField] private RectTransform _objectOptionContainer;
     [SerializeField] private ObjectOption _objectOptionPrefab;
 

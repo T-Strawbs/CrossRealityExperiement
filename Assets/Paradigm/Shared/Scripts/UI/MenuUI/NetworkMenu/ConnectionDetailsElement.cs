@@ -10,6 +10,11 @@ using Unity.Netcode;
 public class ConnectionDetailsElement : ConnectionElement
 {
     /// <summary>
+    /// The text element for detailing what the current connection type that we are currently
+    /// configuring
+    /// </summary>
+    [SerializeField] private TMP_Text _connectionTypeText;
+    /// <summary>
     /// Input field for setting the IP of  the future connection
     /// </summary>
     [SerializeField] private TMP_InputField _ipInputField;
@@ -69,10 +74,12 @@ public class ConnectionDetailsElement : ConnectionElement
         if(connectionType == ConnectionType.HOST)
         {
             _connectButtonText.text = "Host";
+            _connectionTypeText.text = "Configuring Server";
         }
         else
         {
             _connectButtonText.text = "Join";
+            _connectionTypeText.text = "Configuring Client";
         }
     }    
 

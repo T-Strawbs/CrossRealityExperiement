@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 15003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: CrossReality
+  m_Name: MetaQuest3
   m_EditorClassIdentifier: 
   m_AssetVersion: 1
   m_BuildTarget: 13
   m_Subtarget: 0
   m_PlatformId: b9b35072a6f44c2e863f17467ea3dc13
   m_PlatformBuildProfile:
-    rid: 5121840967849869515
+    rid: 5121841026226716862
   m_OverrideGlobalSceneList: 1
   m_Scenes:
+  - m_enabled: 0
+    m_path: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/DemoScene.unity
   - m_enabled: 1
-    m_path: Assets/Paradigm/AR_AV/Scenes/ARAV_Scene.unity
+    m_path: Assets/Paradigm/VR/Scenes/VR_scene.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
@@ -32,7 +34,7 @@ MonoBehaviour:
     - line: '|   AndroidProfiler: 0'
     - line: '|   AndroidFilterTouchesWhenObscured: 0'
     - line: '|   AndroidEnableSustainedPerformanceMode: 0'
-    - line: '|   defaultScreenOrientation: 4'
+    - line: '|   defaultScreenOrientation: 3'
     - line: '|   targetDevice: 2'
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
@@ -71,7 +73,7 @@ MonoBehaviour:
     - line: '|   defaultScreenHeight: 768'
     - line: '|   defaultScreenWidthWeb: 960'
     - line: '|   defaultScreenHeightWeb: 600'
-    - line: '|   m_StereoRenderingPath: 0'
+    - line: '|   m_StereoRenderingPath: 2'
     - line: '|   m_ActiveColorSpace: 1'
     - line: '|   unsupportedMSAAFallback: 0'
     - line: '|   m_SpriteBatchMaxVertexCount: 65535'
@@ -169,16 +171,8 @@ MonoBehaviour:
     - line: '|   preloadedAssets:'
     - line: '|   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b,
         type: 3}'
-    - line: '|   - {fileID: 7932219772859992385, guid: e2a848dceff59344eb4f3db416b22522,
-        type: 2}'
-    - line: '|   - {fileID: 1847635916693964740, guid: 9e805db0154869e4c85fa2271a332867,
-        type: 2}'
-    - line: '|   - {fileID: 11400000, guid: 5bbc783bdf91e3a45a94f04cd98821b0, type:
+    - line: '|   - {fileID: 11400000, guid: 2a54dd9122535da41a9ed6074c5bab28, type:
         2}'
-    - line: '|   - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type:
-        3}'
-    - line: '|   - {fileID: 4800000, guid: 0945859e5a1034c2cb6dce53cb4fb899, type:
-        3}'
     - line: '|   metroInputSource: 0'
     - line: '|   wsaTransparentSwapchain: 0'
     - line: '|   m_HolographicPauseOnTrackingLoss: 1'
@@ -210,9 +204,9 @@ MonoBehaviour:
     - line: '|     tvOS: 0'
     - line: '|   overrideDefaultApplicationIdentifier: 1'
     - line: '|   AndroidBundleVersionCode: 1'
-    - line: '|   AndroidMinSdkVersion: 24'
-    - line: '|   AndroidTargetSdkVersion: 0'
-    - line: '|   AndroidPreferredInstallLocation: 1'
+    - line: '|   AndroidMinSdkVersion: 32'
+    - line: '|   AndroidTargetSdkVersion: 32'
+    - line: '|   AndroidPreferredInstallLocation: 0'
     - line: '|   aotOptions: '
     - line: '|   stripEngineCode: 1'
     - line: '|   iPhoneStrippingLevel: 0'
@@ -555,14 +549,18 @@ MonoBehaviour:
     - line: '|       m_SubKind: '
     - line: '|   m_BuildTargetBatching: []'
     - line: '|   m_BuildTargetShaderSettings: []'
-    - line: '|   m_BuildTargetGraphicsJobs: []'
-    - line: '|   m_BuildTargetGraphicsJobMode: []'
+    - line: '|   m_BuildTargetGraphicsJobs:'
+    - line: '|   - m_BuildTarget: AndroidPlayer'
+    - line: '|     m_GraphicsJobs: 1'
+    - line: '|   m_BuildTargetGraphicsJobMode:'
+    - line: '|   - m_BuildTarget: AndroidPlayer'
+    - line: '|     m_GraphicsJobMode: 1'
     - line: '|   m_BuildTargetGraphicsAPIs:'
     - line: '|   - m_BuildTarget: iOSSupport'
     - line: '|     m_APIs: 10000000'
     - line: '|     m_Automatic: 1'
     - line: '|   - m_BuildTarget: AndroidPlayer'
-    - line: '|     m_APIs: 0b000000'
+    - line: '|     m_APIs: 15000000'
     - line: '|     m_Automatic: 0'
     - line: '|   m_BuildTargetVRSettings: []'
     - line: '|   m_DefaultShaderChunkSizeInMB: 16'
@@ -854,7 +852,7 @@ MonoBehaviour:
     - line: '|   webGLCloseOnQuit: 0'
     - line: '|   webWasm2023: 0'
     - line: '|   scriptingDefineSymbols:'
-    - line: '|     Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS'
+    - line: '|     Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;VR_PLATFORM'
     - line: '|     Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS'
     - line: '|     Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS'
     - line: '|   additionalCompilerArguments: {}'
@@ -863,7 +861,8 @@ MonoBehaviour:
     - line: '|     Android: 1'
     - line: '|   il2cppCompilerConfiguration: {}'
     - line: '|   il2cppCodeGeneration: {}'
-    - line: '|   il2cppStacktraceInformation: {}'
+    - line: '|   il2cppStacktraceInformation:'
+    - line: '|     Android: 1'
     - line: '|   managedStrippingLevel:'
     - line: '|     Android: 1'
     - line: '|     EmbeddedLinux: 1'
@@ -974,8 +973,7 @@ MonoBehaviour:
     - line: '|   windowsGamepadBackendHint: 0'
     - line: '|   cloudProjectId: '
     - line: '|   framebufferDepthMemorylessMode: 0'
-    - line: '|   qualitySettingsNames:'
-    - line: '|   - Mobile'
+    - line: '|   qualitySettingsNames: []'
     - line: '|   projectName: '
     - line: '|   organizationId: '
     - line: '|   cloudEnabled: 0'
@@ -990,14 +988,14 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5121840967849869515
+    - rid: 5121841026226716862
       type: {class: AndroidPlatformBuildSettings, ns: UnityEditor.Android, asm: UnityEditor.Android.Extensions}
       data:
         m_Development: 1
         m_ConnectProfiler: 0
         m_BuildWithDeepProfilingSupport: 0
-        m_AllowDebugging: 1
-        m_WaitForManagedDebugger: 1
+        m_AllowDebugging: 0
+        m_WaitForManagedDebugger: 0
         m_ManagedDebuggerFixedPort: 0
         m_ExplicitNullChecks: 0
         m_ExplicitDivideByZeroChecks: 0
@@ -1009,7 +1007,7 @@ MonoBehaviour:
         m_ExportAsGoogleAndroidProject: 0
         m_DebugSymbolLevel: 1
         m_DebugSymbolFormat: 5
-        m_CurrentDeploymentTargetId: fc9d0293
+        m_CurrentDeploymentTargetId: __builtin__target_default
         m_BuildType: 1
         m_BuildAppBundle: 0
         m_IPAddressToConnect: 

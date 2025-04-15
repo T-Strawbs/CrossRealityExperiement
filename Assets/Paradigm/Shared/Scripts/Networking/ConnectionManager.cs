@@ -1,38 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using System;
-using static System.Collections.Specialized.BitVector32;
 
-public class ConnectionManager : NetworkSingleton<ConnectionManager>
+public enum ConnectionStatus
 {
-    public void Awake()
+    ONLINE,
+    OFFLINE
+}
+
+public enum ConnectionType
+{
+    CLIENT,
+    HOST,
+    NONE
+}
+
+public class ConnectionManager : Singleton<ConnectionManager>
+{
+    public static ConnectionStatus ConnectionStatus { get; private set; } = ConnectionStatus.OFFLINE;
+    public static bool IsOnline { get { return ConnectionStatus == ConnectionStatus.ONLINE; } }
+
+    public static ConnectionType ConnectionType { get; private set; } = ConnectionType.NONE;
+    public static bool IsHost { get { return ConnectionType == ConnectionType.HOST; } }
+    public static bool IsClient { get { return ConnectionType == ConnectionType.CLIENT; } }
+
+
+    private List<INetworkListener> _networkListeners = new List<INetworkListener>();
+
+
+    private void Start()
     {
         NetworkManager.Singleton.OnServerStarted += OnServerStart;
         NetworkManager.Singleton.OnServerStopped += OnServerStop;
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnect;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
+
+        foreach (INetworkListener listener in _networkListeners)
+            listener.SetupNetworkMessages();
     }
 
-    private void OnServerStart()
+    public void SubscribeNetworkListener(INetworkListener networkListener)
     {
-        Debug.Log($"Server started");
-    }
-    private void OnServerStop(bool stopped)
-    {
-        Debug.Log($"Server stopped: {stopped}");
-    }
-
-    private void OnClientConnect(ulong id)
-    {
-        Debug.Log($"Client({id}) connected");
-    }
-
-    private void OnClientDisconnect(ulong id)
-    {
-        Debug.Log($"Client({id}) disconnected");
+        if (_networkListeners.Contains(networkListener))
+            return;
+        _networkListeners.Add(networkListener);
     }
 
     public bool HandleConnection(string ip, string port, ConnectionType connectionType)
@@ -54,7 +67,7 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
         }
         transport.ConnectionData.Port = portNumber;
         //handle Connection type
-        if(connectionType == ConnectionType.SERVER)
+        if(connectionType == ConnectionType.HOST)
         {
             return StartServer();
         }
@@ -63,7 +76,30 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
            return JoinServer();
         }
     }
-    
+
+    private void OnServerStart()
+    {
+        Debug.Log($"Server started");
+
+        if (!NetworkManager.Singleton.IsServer)
+            return;
+    }
+    private void OnServerStop(bool stopped)
+    {
+        Debug.Log($"Server stopped: {stopped}");
+    }
+
+    private void OnClientConnect(ulong id)
+    {
+        Debug.Log($"Client({id}) connected");
+
+       
+    }
+
+    private void OnClientDisconnect(ulong id)
+    {
+        Debug.Log($"Client({id}) disconnected");
+    }
 
     private bool StartServer()
     {
@@ -74,6 +110,9 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
         {
             NetworkManager.Singleton.StartHost();
             Debug.Log($"Hosting server: {ip}:{port}");
+
+            ConnectionStatus = ConnectionStatus.ONLINE;
+            ConnectionType = ConnectionType.HOST;
             return true;
         }
         catch (Exception e)
@@ -93,6 +132,8 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
         {
             NetworkManager.Singleton.StartClient();
             Debug.Log($"joining server: {ip}:{port}");
+            ConnectionStatus = ConnectionStatus.ONLINE;
+            ConnectionType = ConnectionType.CLIENT;
             return true;
         }
         catch (Exception e)
@@ -102,6 +143,24 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
             return false;
         }
     }
+
+    public bool Disconnect()
+    {
+        Debug.Log($"disconnecting from server");
+        try
+        {
+            NetworkManager.Singleton.Shutdown();
+            ConnectionStatus = ConnectionStatus.OFFLINE;
+            ConnectionType = ConnectionType.NONE;
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+            return false;
+        }
+    }
+
     private bool ValidateConnectionData(string ip, string port)
     {
         bool validIP = false, validPort = false;
@@ -155,18 +214,6 @@ public class ConnectionManager : NetworkSingleton<ConnectionManager>
 
     }
 
-    public bool Disconnect()
-    {
-        Debug.Log($"disconnecting from server");
-        try
-        {
-            NetworkManager.Singleton.Shutdown();
-            return true;
-        }
-        catch (Exception e)
-        {
-            Debug.LogException(e);
-            return false;
-        }
-    }
+    
+
 }

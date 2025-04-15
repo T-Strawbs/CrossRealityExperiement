@@ -13,13 +13,14 @@ public enum MenuStateEnum
     NONE
 }
 
-public class HandMenuState : MenuState
+public class VRHandMenuState : MenuState
 {
     [SerializeField] private TMP_Text _menuNameText;
 
     [SerializeField] private MenuUI _mainMenu;
     [SerializeField] private MenuUI _objectsMenu;
     [SerializeField] private MenuUI _networkMenu;
+    [SerializeField] private MenuUI _debugMenu;
 
     private MenuUI _currentMenu;
 
@@ -34,10 +35,13 @@ public class HandMenuState : MenuState
         _mainMenu.Initialise(this);
         _objectsMenu.Initialise(this);
         _networkMenu.Initialise(this);
+        _debugMenu.Initialise(this);
+
 
         _mainMenu.gameObject.SetActive(true);
         _objectsMenu.gameObject.SetActive(false);
         _networkMenu.gameObject.SetActive(false);
+        _debugMenu.gameObject.SetActive(false);
     }
 
     public override void ChangeMenu(MenuStateEnum menuState)
@@ -55,6 +59,9 @@ public class HandMenuState : MenuState
                 break;
             case MenuStateEnum.NETWORK:
                 _currentMenu = _networkMenu;
+                break;
+            case MenuStateEnum.DEBUG:
+                _currentMenu = _debugMenu;
                 break;
             default:
                 break;

@@ -1,8 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DebugMenu : MenuUI
 {
+    [SerializeField] private Button _backButton;
     public override string MenuName { get; protected set; } = "Debug Menu";
 
     [SerializeField] private TMP_Text _debugContent;
@@ -20,12 +22,15 @@ public class DebugMenu : MenuUI
     public override void Initialise(MenuState menuState)
     {
         _menuState = menuState;
+        if (_backButton)
+            _backButton.onClick.AddListener(() => { _menuState.ChangeMenu(MenuStateEnum.MAIN); });
     }
 
     private void Awake()
     {
         _debugContent.text = "";
         Application.logMessageReceived += PrintDebugMessage;
+        
     }
 
 

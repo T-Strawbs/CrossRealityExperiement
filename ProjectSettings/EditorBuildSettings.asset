@@ -9,6 +9,7 @@ EditorBuildSettings:
     path: Assets/Paradigm/AR_AV/Scenes/ARAV_Scene.unity
     guid: d64e9e4bd515d344f8da1de8f5467e60
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 68aa5c1dcfdf5ed4483fb6846bbe5dc6, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 36cf44d805f0ff94bab5450cefc2c96a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 5bbc783bdf91e3a45a94f04cd98821b0, type: 2}

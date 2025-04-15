@@ -8,6 +8,7 @@ public class MainMenuVR : MenuUI
 
     [SerializeField] private Button _objectsMenuBtn;
     [SerializeField] private Button _networkMenuBtn;
+    [SerializeField] private Button _debugMenuBtn;
 
     public override void Activate()
     {
@@ -24,6 +25,7 @@ public class MainMenuVR : MenuUI
         _menuState = handMenu;
         _objectsMenuBtn.onClick.AddListener(() => _menuState.ChangeMenu(MenuStateEnum.OBJECT));
         _networkMenuBtn.onClick.AddListener(() => _menuState.ChangeMenu(MenuStateEnum.NETWORK));
+        _debugMenuBtn.onClick.AddListener(() => _menuState.ChangeMenu(MenuStateEnum.DEBUG));
     }
     
 }
